@@ -27,9 +27,10 @@ import 'package:flutter/services.dart';
 class CustomScaffold extends StatelessWidget {
   final Widget widget;
   final Function function;
+  final String? image;
   final FocusNode focoTela = FocusNode();
 
-  CustomScaffold(this.widget, {required this.function});
+  CustomScaffold(this.widget, {required this.function, this.image});
   _onPressed(context) {
     return showDialog(
       context: context,
@@ -75,9 +76,14 @@ class CustomScaffold extends StatelessWidget {
                     const SizedBox(width: 5),
                     Padding(
                       padding: const EdgeInsets.all(5),
-                      child: Image.network(
-                        'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
-                      ),
+                      // child: Image.network(
+                      //   'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
+                      // ),
+                      child: image == null
+                          ? Image.network(
+                              'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/768px-Python-logo-notext.svg.png',
+                            )
+                          : Image.asset(image ?? ''),
                     ),
                     Text('Aplicativo Teste'),
                     Expanded(child: Container()),
