@@ -4,17 +4,17 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:veev_widgets/veev_widgets.dart';
 
 class CustomVeeVTextInput extends StatefulWidget {
-  final String label;
-  final TextEditingController textController;
-  final Function onChanged;
-  final bool obscure;
-  final bool enabled;
-  final int maxLength;
-  final TextInputType keyboardType;
-  final CustomVeeVTextInputController controller;
+  final String? label;
+  final TextEditingController? textController;
+  final Function(String)? onChanged;
+  final bool? obscure;
+  final bool? enabled;
+  final int? maxLength;
+  final TextInputType? keyboardType;
+  final CustomVeeVTextInputController? controller;
 
   const CustomVeeVTextInput({
-    Key key,
+    Key? key,
     this.label,
     this.textController,
     this.onChanged,
@@ -38,14 +38,14 @@ class CustomVeeVTextInput extends StatefulWidget {
 }
 
 class _CustomVeeVTextInputState extends State<CustomVeeVTextInput> {
-  final String label;
-  final TextEditingController textController;
-  final Function onChanged;
-  final bool obscure;
-  final bool enabled;
-  final int maxLength;
-  final TextInputType keyboardType;
-  CustomVeeVTextInputController controller;
+  final String? label;
+  final TextEditingController? textController;
+  final Function(String)? onChanged;
+  final bool? obscure;
+  final bool? enabled;
+  final int? maxLength;
+  final TextInputType? keyboardType;
+  CustomVeeVTextInputController? controller;
 
   _CustomVeeVTextInputState(
     this.label,
@@ -61,9 +61,9 @@ class _CustomVeeVTextInputState extends State<CustomVeeVTextInput> {
   void initState() {
     super.initState();
     controller = controller ?? CustomVeeVTextInputController();
-    controller.setEnabled(enabled);
-    controller.setObscure(obscure);
-    controller.setOnChanged(onChanged);
+    controller?.setEnabled(enabled ?? true);
+    controller?.setObscure(obscure ?? false);
+    controller?.setOnChanged(onChanged ?? (_) {});
   }
 
   @override
@@ -87,9 +87,9 @@ class _CustomVeeVTextInputState extends State<CustomVeeVTextInput> {
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
-            controller: controller.textController,
-            onChanged: controller.onChanged,
-            obscureText: controller.obscure ?? false,
+            controller: controller?.textController,
+            onChanged: controller?.onChanged,
+            obscureText: controller?.obscure ?? false,
           ),
         );
       },

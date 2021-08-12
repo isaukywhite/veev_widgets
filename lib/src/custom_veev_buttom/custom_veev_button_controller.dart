@@ -9,7 +9,7 @@ abstract class _CustomVeeVButtonControllerBase with Store {
   String label = '';
 
   @observable
-  Function function;
+  Function function = () {};
 
   @action
   setLabel(String value) => label = value;

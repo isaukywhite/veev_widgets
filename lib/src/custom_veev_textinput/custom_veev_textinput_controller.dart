@@ -13,12 +13,12 @@ abstract class _CustomVeeVTextInputControllerBase with Store {
   @observable
   TextEditingController textController = TextEditingController(text: '');
   @observable
-  Function onChanged;
+  void Function(String) onChanged = (_) {};
 
   @action
   setEnabled(bool value) => enabled = value;
   @action
-  setOnChanged(Function value) => onChanged = value;
+  setOnChanged(Function(String) value) => onChanged = value;
   @action
   setText(String value) => textController.text = value;
   @action

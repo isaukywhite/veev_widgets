@@ -62,13 +62,13 @@ mixin _$CustomVeeVTextInputController
       Atom(name: '_CustomVeeVTextInputControllerBase.onChanged');
 
   @override
-  Function get onChanged {
+  void Function(String) get onChanged {
     _$onChangedAtom.reportRead();
     return super.onChanged;
   }
 
   @override
-  set onChanged(Function value) {
+  set onChanged(void Function(String) value) {
     _$onChangedAtom.reportWrite(value, super.onChanged, () {
       super.onChanged = value;
     });
@@ -90,7 +90,7 @@ mixin _$CustomVeeVTextInputController
   }
 
   @override
-  dynamic setOnChanged(Function value) {
+  dynamic setOnChanged(dynamic Function(String) value) {
     final _$actionInfo = _$_CustomVeeVTextInputControllerBaseActionController
         .startAction(name: '_CustomVeeVTextInputControllerBase.setOnChanged');
     try {

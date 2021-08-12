@@ -79,7 +79,7 @@ class _ExemploPageState extends State<ExemploPage> {
             onPressed: function,
             controller: controller,
           ),
-          RaisedButton(
+          ElevatedButton(
             child: Text('Testar'),
             onPressed: changeFunction,
           ),

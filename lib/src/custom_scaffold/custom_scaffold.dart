@@ -29,7 +29,7 @@ class CustomScaffold extends StatelessWidget {
   final Function function;
   final FocusNode focoTela = FocusNode();
 
-  CustomScaffold(this.widget, {this.function});
+  CustomScaffold(this.widget, {required this.function});
   _onPressed(context) {
     return showDialog(
       context: context,
@@ -37,14 +37,14 @@ class CustomScaffold extends StatelessWidget {
         title: Text('Fechar app'),
         content: Text('Deseja fechar o sistema?'),
         actions: [
-          FlatButton(
+          TextButton(
             child: Text('Sim'),
             onPressed: () async {
               function();
               exit(0);
             },
           ),
-          FlatButton(
+          TextButton(
             child: Text('Não'),
             onPressed: () {
               Navigator.pop(context);

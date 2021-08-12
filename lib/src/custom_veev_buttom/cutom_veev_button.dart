@@ -4,15 +4,15 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'custom_veev_button_controller.dart';
 
 class CustomVeeVButton extends StatefulWidget {
-  final double height;
-  final double width;
-  final Color color;
-  final String label;
-  final Function onPressed;
-  final CustomVeeVButtonController controller;
+  final double? height;
+  final double? width;
+  final Color? color;
+  final String? label;
+  final Function? onPressed;
+  final CustomVeeVButtonController? controller;
 
   const CustomVeeVButton({
-    Key key,
+    Key? key,
     this.height,
     this.width,
     this.color,
@@ -33,12 +33,12 @@ class CustomVeeVButton extends StatefulWidget {
 }
 
 class _CustomVeeVButtonState extends State<CustomVeeVButton> {
-  final double height;
-  final double width;
-  final Color color;
-  final String label;
-  final Function onPressed;
-  final CustomVeeVButtonController controller;
+  final double? height;
+  final double? width;
+  final Color? color;
+  final String? label;
+  final Function? onPressed;
+  final CustomVeeVButtonController? controller;
 
   _CustomVeeVButtonState(
     this.height,
@@ -52,8 +52,8 @@ class _CustomVeeVButtonState extends State<CustomVeeVButton> {
   @override
   void initState() {
     super.initState();
-    controller.setLabel(label);
-    controller.setFunction(onPressed);
+    controller?.setLabel(label ?? '');
+    controller?.setFunction(onPressed ?? () {});
   }
 
   @override
@@ -62,15 +62,15 @@ class _CustomVeeVButtonState extends State<CustomVeeVButton> {
       builder: (_) {
         return RawMaterialButton(
           fillColor:
-              controller.function != null ? color ?? Colors.blue : Colors.grey,
+              controller?.function != null ? color ?? Colors.blue : Colors.grey,
           splashColor: color == null ? Colors.blue.withAlpha(130) : color
-            ..withAlpha(130),
+            ?..withAlpha(130),
           child: Container(
             height: height ?? 55,
             width: width ?? 280,
             child: Center(
               child: Text(
-                "${controller.label}",
+                "${controller?.label}",
                 maxLines: 1,
                 style: TextStyle(
                   color: Colors.white,
@@ -79,7 +79,9 @@ class _CustomVeeVButtonState extends State<CustomVeeVButton> {
               ),
             ),
           ),
-          onPressed: controller.function,
+          onPressed: () {
+            controller?.function();
+          },
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(5),
           ),
