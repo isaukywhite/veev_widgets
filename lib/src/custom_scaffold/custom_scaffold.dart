@@ -28,9 +28,11 @@ class CustomScaffold extends StatelessWidget {
   final Widget widget;
   final Function function;
   final String? image;
+  final String title;
   final FocusNode focoTela = FocusNode();
 
-  CustomScaffold(this.widget, {required this.function, this.image});
+  CustomScaffold(this.widget,
+      {required this.function, this.image, this.title = 'Aplicativo'});
   _onPressed(context) {
     return showDialog(
       context: context,
@@ -85,7 +87,7 @@ class CustomScaffold extends StatelessWidget {
                             )
                           : Image.asset(image ?? ''),
                     ),
-                    Text('Aplicativo Teste'),
+                    Text(title),
                     Expanded(child: Container()),
                     Row(
                       mainAxisSize: MainAxisSize.min,
